@@ -1,0 +1,33 @@
+{
+  "name": "react-native-material-motion",
+  "version": "0.1.0",
+  "description": "React Native Components for Material Motion implemented in Javascript",
+  "main": "src/index.js",
+  "files": [
+    "src/"
+  ],
+  "scripts": {
+    "publish": "npm publish"
+  },
+  "keywords": [
+    "react-native",
+    "animated",
+    "material-design",
+    "material-motion"
+  ],
+  "author": "Abinash Panda <abinash@prodios.com> (http://prodioslabs.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-native": "^0.56.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0"
+  }
+}
