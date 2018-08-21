@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { createDrawerNavigator, withNavigation } from 'react-navigation';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { FabToBottomToolbar } from 'react-native-material-motion';
+import { FabToBottomToolbar, FabExpandingMenu } from 'react-native-material-motion';
 
 const Toolbar = withNavigation(({ navigation }) => (
   <View style={styles.toolbar}>
@@ -64,6 +64,40 @@ const FabToBottomToolbarScreen = () => (
   </React.Fragment>
 );
 
+const FabExpandingMenuScreen = () => (
+  <React.Fragment>
+    <Toolbar />
+    <FabExpandingMenu
+      fabIcon={<MaterialIcons name="menu" />}
+      fabIconMenuExpanded={<MaterialIcons name="close" />}
+      renderItems={({ hideMenu }) => [
+        {
+          name: 'Add update',
+          icon: <MaterialIcons name="create" />,
+          onPress: () => {
+            hideMenu();
+          },
+        },
+        {
+          name: 'Add attachment',
+          icon: <MaterialIcons name="attach-file" />,
+          onPress: () => {
+            hideMenu();
+          },
+        },
+        {
+          name: 'Add checklist',
+          icon: <MaterialIcons name="list" />,
+          onPress: () => {
+            hideMenu();
+          },
+        },
+      ]}
+      rotate
+    />
+  </React.Fragment>
+);
+
 const Navigator = createDrawerNavigator(
   {
     FabToBottomToolbarScreen: {
@@ -72,10 +106,16 @@ const Navigator = createDrawerNavigator(
         drawerLabel: 'Fab to Bottom Toolbar',
       },
     },
+    FabExpandingMenuScreen: {
+      screen: FabExpandingMenuScreen,
+      navigationOptions: {
+        drawerLabel: 'Fab expanding menu',
+      },
+    },
   },
   {
     drawerPosition: 'left',
-    drawerBackgroundColor: '#5F676B',
+    drawerBackgroundColor: '#182024',
     contentOptions: {
       labelStyle: {
         color: '#FAAB1A',
@@ -85,8 +125,8 @@ const Navigator = createDrawerNavigator(
 );
 
 const App = () => (
-  <SafeAreaView style={styles.container}>
-    <StatusBar barStyle="light-content" />
+  <SafeAreaView style={styles.wrapper}>
+    <StatusBar barStyle="light-content" backgroundColor="#1D272B" />
     <View style={styles.container}>
       <Navigator />
     </View>
@@ -102,9 +142,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#1D272B',
     elevation: 4,
   },
+  wrapper: {
+    flex: 1,
+    backgroundColor: '#1D272B',
+  },
   container: {
     flex: 1,
     backgroundColor: '#232F34',
-    position: 'relative',
   },
 });
