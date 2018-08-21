@@ -1,7 +1,26 @@
-import React from 'react';
-import {
-  StyleSheet, SafeAreaView, View, StatusBar,
-} from 'react-native';
+# React Native Material Motion
+
+`react-native-material-motion` contains the common material design motion implemented using pure Javascript.
+
+## Installation
+
+```bash
+yarn add react-native-material-motion
+```
+
+or
+
+```bash
+npm install react-native-material-motion
+```
+
+## Examples
+
+### Fab To Bottom Toolbar Motion
+
+![Fab to Bottom Toolbar](docs/images/fab-to-bottom-toolbar.gif)
+
+```jsx
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { FabToBottomToolbar } from 'react-native-material-motion';
 
@@ -52,13 +71,12 @@ const App = () => (
     </View>
   </SafeAreaView>
 );
+```
 
-export default App;
+<hr />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#232F34',
-    position: 'relative',
-  },
-});
+#### Looking for developers for your project
+
+This project is maintained by Prodios Labs. We specialize in the designing and coding of custom UI for Mobile Apps and Websites.
+
+![Hire Prodios Labs Team](docs/images/hire.png)

@@ -10,6 +10,7 @@ import {
   Platform,
 } from 'react-native';
 
+import { uniqueKey } from '../util';
 import Fab from './Fab';
 
 const { width: WINDOW_WIDTH } = Dimensions.get('window');
@@ -48,13 +49,13 @@ const TRANSLATE_CURVE = Easing.bezier(0, 0.5, 0.5, 1);
 class FabToBottomToolbar extends React.Component {
   static propTypes = {
     fabIcon: PropTypes.node.isRequired,
-    toolbarItems: PropTypes.array,
+    renderItems: PropTypes.func,
     rippleColor: PropTypes.string,
     itemIconColor: PropTypes.string,
   };
 
   static defaultProps = {
-    toolbarItems: [],
+    renderItems: () => [],
     rippleColor: '#fff',
     itemIconColor: 'rgba(0, 0, 0, 0.97)',
   };
@@ -159,7 +160,7 @@ class FabToBottomToolbar extends React.Component {
     });
 
     const {
-      fabIcon, toolbarItems, rippleColor, itemIconColor,
+      fabIcon, renderItems, rippleColor, itemIconColor,
     } = this.props;
     const { toolbarShown } = this.state;
 
@@ -198,14 +199,10 @@ class FabToBottomToolbar extends React.Component {
           ]}
           pointerEvents={toolbarShown ? 'auto' : 'none'}
         >
-          {toolbarItems.map((item, index) => (
+          {renderItems({ hideToolbar: this.hideToolbar }).map(item => (
             <Touchable
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-              onPress={() => {
-                item.onPress();
-                this.hideToolbar();
-              }}
+              key={uniqueKey()}
+              onPress={item.onPress}
               background={background}
               style={styles.menuButton}
             >

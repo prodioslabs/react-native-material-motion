@@ -21,6 +21,9 @@
     "ios": {
       "supportsTablet": true
     },
+    "androidStatusBar": {
+      "barStyle": "light-content"
+    },
     "packagerOpts": {
       "config": "./rn-cli.config.js",
       "projectRoots": ""
